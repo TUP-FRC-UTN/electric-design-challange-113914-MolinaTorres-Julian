@@ -1,5 +1,146 @@
 {
-  "budgets": [],
+  "budgets": [
+    {
+      "id": "e6ac",
+      "date": "2024-11-06",
+      "client": "renderito",
+      "modules": [
+        {
+          "type": "1",
+          "zone": "Living"
+        },
+        {
+          "type": "1",
+          "zone": "Cocina"
+        },
+        {
+          "type": "1",
+          "zone": "Dormitorio"
+        },
+        {
+          "type": "2",
+          "zone": "Comedor"
+        },
+        {
+          "type": "4",
+          "zone": "Cocina"
+        }
+      ]
+    },
+    {
+      "id": "dbd5",
+      "date": "2024-11-06",
+      "client": "renderito",
+      "modules": [
+        {
+          "type": "1",
+          "zone": "Living"
+        },
+        {
+          "type": "1",
+          "zone": "Cocina"
+        },
+        {
+          "type": "1",
+          "zone": "Dormitorio"
+        },
+        {
+          "type": "2",
+          "zone": "Living"
+        },
+        {
+          "type": "1",
+          "zone": "Living"
+        }
+      ]
+    },
+    {
+      "id": "1b8a",
+      "date": "2024-11-01",
+      "client": "toto",
+      "modules": [
+        {
+          "type": "2",
+          "zone": "Comedor"
+        },
+        {
+          "type": "6",
+          "zone": "Cocina"
+        },
+        {
+          "type": "1",
+          "zone": "Dormitorio"
+        },
+        {
+          "type": "3",
+          "zone": "Living"
+        },
+        {
+          "type": "4",
+          "zone": "Cocina"
+        }
+      ]
+    },
+    {
+      "id": "ad6d",
+      "date": "2024-11-01",
+      "client": "ñero",
+      "modules": [
+        {
+          "type": "6",
+          "zone": "Cocina"
+        },
+        {
+          "type": "4",
+          "zone": "Dormitorio"
+        },
+        {
+          "type": "3",
+          "zone": "Cocina"
+        },
+        {
+          "type": "2",
+          "zone": "Comedor"
+        },
+        {
+          "type": "1",
+          "zone": "Living"
+        }
+      ],
+      "boxesRequired": 0,
+      "groupedModules": {
+        "Cocina": [
+          {
+            "type": "6",
+            "zone": "Cocina"
+          },
+          {
+            "type": "3",
+            "zone": "Cocina"
+          }
+        ],
+        "Dormitorio": [
+          {
+            "type": "4",
+            "zone": "Dormitorio"
+          }
+        ],
+        "Comedor": [
+          {
+            "type": "2",
+            "zone": "Comedor"
+          }
+        ],
+        "Living": [
+          {
+            "type": "1",
+            "zone": "Living"
+          }
+        ]
+      },
+      "total": 0
+    }
+  ],
   "module-types": [
     {
       "id": "1",

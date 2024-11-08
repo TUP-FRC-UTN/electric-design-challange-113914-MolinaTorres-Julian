@@ -2,3 +2,73 @@
 https://getbootstrap.com/docs/5.3/forms/form-control/#example
 https://getbootstrap.com/docs/5.3/forms/select/#default
 https://getbootstrap.com/docs/5.3/forms/select/#default -->
+
+<div class="container mt-4">
+    <h2>Cotización de Instalación Eléctrica</h2>
+    <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- Fecha de la Cotización -->
+        <div class="form-group">
+            <label for="date">Fecha de Cotización</label>
+            <input type="date" id="date" class="form-control" formControlName="date" />
+            <div *ngIf="budgetForm.get('date')?.invalid && budgetForm.get('date')?.touched" class="text-danger">
+                Fecha inválida.
+            </div>
+        </div>
+
+        <!-- Cliente -->
+        <div class="form-group">
+            <label for="client">Cliente</label>
+            <input type="text" id="client" class="form-control" formControlName="client" />
+            <div *ngIf="budgetForm.get('client')?.invalid && budgetForm.get('client')?.touched" class="text-danger">
+                El nombre del cliente es requerido.
+            </div>
+        </div>
+
+        <!-- Módulos -->
+        <div formArrayName="modules" class="mb-3">
+            <h4>Módulos</h4>
+            <button type="button" class="btn btn-primary mb-2" (click)="addModule()">Agregar Módulo</button>
+
+            <div *ngFor="let module of modules.controls; let i = index" [formGroupName]="i" class="border p-3 mb-2">
+                <label>Tipo de Módulo</label>
+                <select class="form-control" formControlName="type" (change)="onModuleChange(i)">
+                    <option value="">Seleccione un tipo</option>
+                    <option *ngFor="let type of moduleTypes" [value]="type.id">
+                        {{ type.name }}
+                    </option>
+                </select>
+                <div *ngIf="module.get('type')?.invalid && module.get('type')?.touched" class="text-danger">
+                    El tipo de módulo es requerido.
+                </div>
+
+                <label>Ambiente</label>
+                <select class="form-control" formControlName="zone">
+                    <option value="">Seleccione un ambiente</option>
+                    <!-- Asegúrate de que zoneKey sea tratado como clave del enum -->
+                    <option *ngFor="let zoneKey of objectKeys" [value]="zoneEnum[zoneKey]">
+                        {{ zoneEnum[zoneKey] }}
+                    </option>
+                </select>
+                <div *ngIf="module.get('zone')?.invalid && module.get('zone')?.touched" class="text-danger">
+                    El ambiente es requerido.
+                </div>
+
+                <!-- Campos de solo lectura -->
+                <div class="form-group">
+                    <label>Espacios que Ocupa</label>
+                    <input class="form-control" formControlName="slots" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label>Precio</label>
+                    <input class="form-control" formControlName="price" readonly />
+                </div>
+
+                <button type="button" class="btn btn-danger mt-3" (click)="removeModule(i)">Eliminar Módulo</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="budgetForm.invalid">Guardar Cotización</button>
+    </form>
+</div>

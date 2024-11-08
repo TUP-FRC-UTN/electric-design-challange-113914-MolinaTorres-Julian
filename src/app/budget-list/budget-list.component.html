@@ -1,1 +1,35 @@
-<!-- BUILD IT FROM HERE https://getbootstrap.com/docs/5.3/content/tables/#striped-rows -->
+<div class="container mt-4">
+    <h2>Listado de Presupuestos</h2>
+
+    <div *ngIf="loading">Cargando presupuestos...</div>
+
+    <div *ngIf="!loading && budgets.length === 0">
+        No hay presupuestos disponibles.
+    </div>
+
+    <div *ngIf="!loading && budgets.length > 0">
+        <div *ngFor="let budget of budgets; let i = index" class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ budget.client }} - {{ budget.date | date }}</h5>
+
+                <!-- Resumen del Presupuesto -->
+                <div class="mb-3">
+                    <h6>Resumen</h6>
+                    <p><strong>Cajas necesarias:</strong>
+                        {{ summaries[i].totalBoxes }}
+                    </p>
+                    <p><strong>Total de la cotización:</strong> ${{ summaries[i].totalCost }}</p>
+
+                    <div *ngFor="let zone of objectKeys">
+                        <h6>{{ zone }}:</h6>
+                        <ul>
+                            <li *ngFor="let module of summaries[i].modulesByZone[zone]">
+                                {{ module.name }} - {{ module.slots }} espacios, ${{ module.price }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
